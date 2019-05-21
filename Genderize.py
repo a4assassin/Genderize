@@ -4,10 +4,12 @@ import torch
 import numpy as np
 import pickle
 import matplotlib.pyplot as plt
+
 torch.set_default_tensor_type("torch.cuda.FloatTensor")
+
+
 detector = cv2.CascadeClassifier('E:\ML project\haarcascade_frontalface_default.xml')
 layer_dims = [1600, 50, 2]
-
 font=cv2.FONT_HERSHEY_SIMPLEX
 
 def non_linear_activation(Z, activation = "ReLU"):
@@ -25,8 +27,8 @@ def non_linear_activation(Z, activation = "ReLU"):
     
     return Z
 
+
 def forward_propagation(X, parameters):
-  
     L = len(layer_dims)
     cache = {}
     cache["A0"] = X
@@ -46,7 +48,6 @@ def forward_propagation(X, parameters):
 
 
 def detect_face(test_X, layer_dims):
-    
     while True:
         indx = int(input("Enter the numeber < 2000 : "))
         if indx == -1:
